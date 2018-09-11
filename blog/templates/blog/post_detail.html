@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<a href="{% url 'blog:update_post' pk=post.pk %}">Update</a>
+<a href="{% url 'blog:delete_post' pk=post.pk %}">Delete</a>
+<ul>
+    <li>Name: {{post.name}}</li>
+    <li>Description: {{post.description}}</li>
+    {% if post.date_publish %}
+        <li>Date Publish: {{ post.date_publish }}</li>
+    {% else %}
+        <a class="btn btn-info" href="{% url 'blog:publish_post' pk=post.pk %}">Publish</a>
+    {% endif %}
+</ul>
+{% endblock %}

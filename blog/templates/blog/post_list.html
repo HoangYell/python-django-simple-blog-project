@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<ol>
+    {% for post in post_list %}
+        <li>
+            <ul>
+                <a href="{% url 'blog:detail_post' post.id %}">{{post.name}}</a>
+                <li>{{ post.description }}</li>
+                {% if post.date_publish %}
+                    <li>{{ post.date_publish }}</li>
+                {% endif %}
+            </ul>
+        </li>
+    {% empty %}
+        <i>There is no post to show</i>
+    {% endfor %}
+</ol>
+{% endblock %}

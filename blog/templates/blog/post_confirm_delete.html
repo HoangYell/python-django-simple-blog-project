@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+Are you sure to delete {{post.name}}
+<form method="POST">
+    <div class="form-group" >
+        {% csrf_token %}
+        <input class="btn btn-danger" type="submit" value="submit"/>
+    </div>
+</form>
+{% endblock %}

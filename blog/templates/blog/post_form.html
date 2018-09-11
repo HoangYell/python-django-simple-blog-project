@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<form method="POST">
+    <div class="form-group">
+        <!-- Publish button -->
+        {% if post.date_publish is None and post.pk %}
+            <a class="btn btn-info" href="{% url 'blog:publish_post' pk=post.pk %}">Publish</a>
+        {% endif %}
+        <!-- Post Form -->
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Submit" class="btn btn-primary"/>
+    </div>
+</form>
+{% endblock %}
